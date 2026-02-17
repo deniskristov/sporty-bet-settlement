@@ -29,7 +29,7 @@ This will:
 6. Build and start the Event Consumer service on port 8081
 7. Build and start the Betting Settlement service on port 8082
 
-### Running Locally
+### Running manually
 
 1. Start Kafka and Zookeeper:
 ```bash
