@@ -1,0 +1,100 @@
+services:
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.5.0
+    container_name: zookeeper
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    ports:
+      - "2181:2181"
+    networks:
+      - sporty-bet-network
+
+  kafka:
+    image: confluentinc/cp-kafka:7.5.0
+    container_name: kafka
+    depends_on:
+      - zookeeper
+    ports:
+      - "9092:9092"
+      - "29092:29092"
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:29092,PLAINTEXT_HOST://localhost:9092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
+    networks:
+      - sporty-bet-network
+    healthcheck:
+      test: ["CMD", "kafka-broker-api-versions", "--bootstrap-server", "localhost:9092"]
+      interval: 10s
+      timeout: 10s
+      retries: 5
+
+  rocketmq-namesrv:
+    image: apache/rocketmq:5.3.2
+    container_name: rocketmq-namesrv
+    ports:
+      - "9876:9876"
+    networks:
+      - sporty-bet-network
+    command: sh mqnamesrv
+
+  rocketmq-broker:
+    image: apache/rocketmq:5.3.2
+    container_name: rocketmq-broker
+    depends_on:
+      - rocketmq-namesrv
+    ports:
+      - "10909:10909"
+      - "10911:10911"
+      - "10912:10912"
+    environment:
+      NAMESRV_ADDR: rocketmq-namesrv:9876
+    command: sh mqbroker -n namesrv:9876
+    networks:
+      - sporty-bet-network
+
+  event-publisher:
+    build:
+      context: .
+      dockerfile: ./event-publisher/Dockerfile
+    container_name: settlement-publisher
+    ports:
+      - "8080:8080"
+    environment:
+      KAFKA_BOOTSTRAP_SERVERS: kafka:29092
+    networks:
+      - sporty-bet-network
+
+  event-consumer:
+    build:
+      context: .
+      dockerfile: ./event-consumer/Dockerfile
+    container_name: settlement-consumer
+    ports:
+      - "8081:8081"
+    environment:
+      KAFKA_BOOTSTRAP_SERVERS: kafka:29092
+      ROCKETMQ_NAME_SERVER: rocketmq-namesrv:9876
+    networks:
+      - sporty-bet-network
+
+  betting-settlement:
+    build:
+      context: .
+      dockerfile: ./betting-settlement-service/Dockerfile
+    container_name: betting-settlement-service
+    ports:
+      - "8082:8082"
+    environment:
+      ROCKETMQ_NAME_SERVER: rocketmq-namesrv:9876
+    networks:
+      - sporty-bet-network
+
+networks:
+  sporty-bet-network:
+    driver: bridge
