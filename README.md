@@ -1,4 +1,6 @@
 # SportyBet Settlement Service
+[![Java build with Maven](https://github.com/deniskristov/sporty-bet-settlement/actions/workflows/test.yml/badge.svg)](https://github.com/deniskristov/sporty-bet-settlement/actions/workflows/test.yml)
+
 
 A multi-module Spring Boot application that provides an API endpoint to publish sport events to Kafka and a consumer service to process them, built with clean architecture principles.  
 See `Requirements.pdf` for the details.
