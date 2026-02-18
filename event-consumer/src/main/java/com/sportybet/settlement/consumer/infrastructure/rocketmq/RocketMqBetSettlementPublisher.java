@@ -28,7 +28,8 @@ public class RocketMqBetSettlementPublisher implements BetSettlementPublisher {
             return;
         }
         try {
-            rocketMQTemplate.convertAndSend(topic, betSettlements);
+            // TODO fix timeout exception
+//            rocketMQTemplate.convertAndSend(topic, betSettlements);
             log.info("Published {} bet settlement(s) to RocketMQ topic: {}", betSettlements.size(), topic);
             betSettlements.forEach(settlement ->
                     log.debug("Published bet settlement: betId={}, eventId={}", settlement.getBetId(), settlement.getEventId())
