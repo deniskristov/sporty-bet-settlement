@@ -1,4 +1,4 @@
-package com.sportybet.settlement.consumer.domain.port;
+package com.sportybet.settlement.consumer.application.port.out;
 
 import com.sportybet.settlement.consumer.domain.model.BetSettlement;
 

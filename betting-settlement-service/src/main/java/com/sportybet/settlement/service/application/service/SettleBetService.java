@@ -1,7 +1,7 @@
 package com.sportybet.settlement.service.application.service;
 
 import com.sportybet.settlement.service.domain.model.BetSettlement;
-import com.sportybet.settlement.service.domain.usecase.SettleBetUseCase;
+import com.sportybet.settlement.service.application.port.in.SettleBetUseCase;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

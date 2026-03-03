@@ -5,9 +5,9 @@ import com.sportybet.settlement.consumer.domain.model.Bet;
 import com.sportybet.settlement.consumer.domain.model.BetSettlement;
 import com.sportybet.settlement.consumer.domain.model.SportEvent;
 
-import com.sportybet.settlement.consumer.domain.port.BetRepository;
-import com.sportybet.settlement.consumer.domain.port.BetSettlementPublisher;
-import com.sportybet.settlement.consumer.domain.usecase.ProcessSportEventUseCase;
+import com.sportybet.settlement.consumer.application.port.out.BetRepository;
+import com.sportybet.settlement.consumer.application.port.out.BetSettlementPublisher;
+import com.sportybet.settlement.consumer.application.port.in.ProcessSportEventUseCase;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

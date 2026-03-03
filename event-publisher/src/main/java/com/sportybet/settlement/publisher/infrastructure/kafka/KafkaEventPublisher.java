@@ -3,7 +3,7 @@ package com.sportybet.settlement.publisher.infrastructure.kafka;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sportybet.settlement.publisher.domain.model.SportEvent;
-import com.sportybet.settlement.publisher.domain.port.EventPublisher;
+import com.sportybet.settlement.publisher.application.port.out.EventPublisher;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;

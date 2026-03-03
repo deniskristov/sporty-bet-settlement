@@ -1,4 +1,4 @@
-package com.sportybet.settlement.service.domain.usecase;
+package com.sportybet.settlement.service.application.port.in;
 
 import com.sportybet.settlement.service.domain.model.BetSettlement;
 

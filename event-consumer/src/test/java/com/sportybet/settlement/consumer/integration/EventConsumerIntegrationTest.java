@@ -1,11 +1,8 @@
 package com.sportybet.settlement.consumer.integration;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sportybet.settlement.consumer.domain.model.Bet;
 import com.sportybet.settlement.consumer.domain.model.SportEvent;
-import com.sportybet.settlement.consumer.domain.port.BetRepository;
-import com.sportybet.settlement.consumer.domain.port.BetSettlementPublisher;
-import com.sportybet.settlement.consumer.domain.usecase.ProcessSportEventUseCase;
+import com.sportybet.settlement.consumer.application.port.out.BetSettlementPublisher;
+import com.sportybet.settlement.consumer.application.port.in.ProcessSportEventUseCase;
 import com.sportybet.settlement.consumer.infrastructure.persistence.inmemory.entity.BetEntity;
 import com.sportybet.settlement.consumer.infrastructure.persistence.inmemory.repository.SpringDataBetRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -17,7 +14,6 @@ import org.springframework.kafka.test.context.EmbeddedKafka;
 import org.springframework.test.context.TestPropertySource;
 
 import java.util.Arrays;
-import java.util.List;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyList;

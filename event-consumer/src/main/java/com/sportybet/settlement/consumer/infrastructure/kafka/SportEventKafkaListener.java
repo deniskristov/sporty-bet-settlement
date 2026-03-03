@@ -3,7 +3,7 @@ package com.sportybet.settlement.consumer.infrastructure.kafka;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sportybet.settlement.consumer.domain.model.SportEvent;
-import com.sportybet.settlement.consumer.domain.usecase.ProcessSportEventUseCase;
+import com.sportybet.settlement.consumer.application.port.in.ProcessSportEventUseCase;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.annotation.KafkaListener;

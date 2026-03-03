@@ -1,7 +1,7 @@
 package com.sportybet.settlement.publisher.presentation.controller;
 
 import com.sportybet.settlement.publisher.domain.model.SportEvent;
-import com.sportybet.settlement.publisher.domain.usecase.PublishSportEventUseCase;
+import com.sportybet.settlement.publisher.application.port.in.PublishSportEventUseCase;
 import com.sportybet.settlement.publisher.presentation.dto.SportEventRequest;
 import com.sportybet.settlement.publisher.presentation.dto.SportEventResponse;
 import com.sportybet.settlement.publisher.presentation.mapper.SportEventMapper;

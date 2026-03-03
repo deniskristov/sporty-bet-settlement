@@ -1,7 +1,7 @@
 package com.sportybet.settlement.service.integration;
 
 import com.sportybet.settlement.service.domain.model.BetSettlement;
-import com.sportybet.settlement.service.domain.usecase.SettleBetUseCase;
+import com.sportybet.settlement.service.application.port.in.SettleBetUseCase;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

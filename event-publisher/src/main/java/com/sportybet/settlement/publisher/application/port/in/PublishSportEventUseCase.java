@@ -1,4 +1,4 @@
-package com.sportybet.settlement.publisher.domain.usecase;
+package com.sportybet.settlement.publisher.application.port.in;
 
 import com.sportybet.settlement.publisher.domain.model.SportEvent;
 
